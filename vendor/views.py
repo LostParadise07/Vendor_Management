@@ -110,6 +110,11 @@ def create_purchase(request):
         acknowledgment_date = request.POST.get('acknowledgment_date', None)
 
         # Create PurchaseOrder object
+        if not quality_rating:
+            quality_rating=0
+        # if acknowledgment_date is none make it as 0-0-0 like the date format with seconds and time 
+        if not acknowledgment_date:
+            acknowledgment_date='0000-00-00T00:00:00'
         PurchaseOrder.objects.create(
             po_number=po_number,
             vendor=vendor,
