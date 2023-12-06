@@ -20,7 +20,7 @@ This project implements a Vendor Management System (VMS) using Django and Django
 
 1. **Clone Repository:**
     ```bash
-    git clone <repository_url>
+    git https://github.com/LostParadise07/Vendor_Management
     cd Vendor_Management
     ```
 
