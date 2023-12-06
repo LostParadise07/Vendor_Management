@@ -1,0 +1,116 @@
+{% load static %}
+        <!DOCTYPE html>
+    
+        <html lang="en">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <!-- Boxicons CSS -->
+            <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+            <title>Vendor Management</title>
+            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+          </head>
+          <body>
+            <!-- navbar -->
+            <nav class="navbar">
+              <div class="logo_item">
+                <i class="bx bx-menu" id="sidebarOpen"></i>
+                <img src="data:image/jpeg;base64,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" alt=""></i>Home
+              </div>
+              <div class="search_bar">
+                <input type="text" placeholder="Search" />
+              </div>
+              <div class="navbar_content">
+                <i class="bi bi-grid"></i>
+                <i class='bx bx-sun' id="darkLight"></i>
+                <i class='bx bx-bell' ></i>
+                <img src="data:image/jpeg;base64,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" alt="" class="profile" />
+              </div>
+            </nav>
+            <!-- sidebar -->
+            <nav class="sidebar">
+              <div class="menu_content">
+                <ul class="menu_items">
+                  <div class="menu_title menu_dahsboard"></div>
+                  <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
+                  <!-- start -->
+                  <li class="item">
+                    <div href="#" class="nav_link submenu_item">
+                      <span class="navlink_icon">
+                        <i class="bx bx-home-alt"></i>
+                      </span>
+                      <span class="navlink">Vendor Profile</span>
+                      <i class="bx bx-chevron-right arrow-left"></i>
+                    </div>
+                    <ul class="menu_items submenu">
+                      <a href="{% url 'list_vendors' %}" class="nav_link sublink">List Vendors</a>
+                      <a href="{% url 'create_vendor' %}" class="nav_link sublink">Create Vendor</a>
+                      <a href="{% url 'list_vendors' %}" class="nav_link sublink">View Vendor Details</a>
+                      <a href="#" class="nav_link sublink">Vendor Performance</a>
+                    </ul>
+                  </li>
+                  <!-- end -->
+                  <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
+                  <!-- start -->
+                  <li class="item">
+                    <div href="#" class="nav_link submenu_item">
+                      <span class="navlink_icon">
+                        <i class="bx bx-grid-alt"></i>
+                      </span>
+                      <span class="navlink">Order Tracking
+                    </span>
+                      <i class="bx bx-chevron-right arrow-left"></i>
+                    </div>
+                    <ul class="menu_items submenu">
+                      <a href="{% url 'list_purchases' %}" class="nav_link sublink">List Purchase Orders</a>
+                      <a href="{% url 'create_purchase' %}" class="nav_link sublink">Create Purchase Order</a>
+                      <a href="#" class="nav_link sublink">View Purchase Order </a>
+                      <a href="#" class="nav_link sublink">Acknowledge Purchase</a>
+                    </ul>
+                  </li>
+                </ul>
+                
+                
+                
+                
+              </div>
+            </nav>
+            <!-- JavaScript -->
+            <script>
+                const body = document.querySelector("body");
+const darkLight = document.querySelector("#darkLight");
+const sidebar = document.querySelector(".sidebar");
+const submenuItems = document.querySelectorAll(".submenu_item");
+const sidebarOpen = document.querySelector("#sidebarOpen");
+const sidebarClose = document.querySelector(".collapse_sidebar");
+const sidebarExpand = document.querySelector(".expand_sidebar");
+sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+
+
+
+
+
+darkLight.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  if (body.classList.contains("dark")) {
+    document.setI
+    darkLight.classList.replace("bx-sun", "bx-moon");
+  } else {
+    darkLight.classList.replace("bx-moon", "bx-sun");
+  }
+});
+
+submenuItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("show_submenu");
+    submenuItems.forEach((item2, index2) => {
+      if (index !== index2) {
+        item2.classList.remove("show_submenu");
+      }
+    });
+  });
+});
+
+            </script>
+          </body>
+        </html>

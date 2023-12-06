@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Vendors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding-top: 20px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .actions a {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>List of Vendors</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact Details</th>
+                        <th>Address</th>
+                        <th>Vendor Code</th>
+                        <th>Actions</th>
+                        <th>Vendor Details</th>
+                        <th>Performance Matrices</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vendor in vendors %}
+                    <tr>
+                        <td>{{ vendor.name }}</td>
+                        <td>{{ vendor.contact_details }}</td>
+                        <td>{{ vendor.address }}</td>
+                        <td>{{ vendor.vendor_code }}</td>
+                        
+                        <td class="actions">
+                            <a href="{% url 'update_vendor' vendor.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'delete_vendor' vendor.id %}" onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                        <td>
+                            <a href="{% url 'vendor_details' vendor_id=vendor.id %}">Click</a>
+                        </td>
+                        <td>
+                            <a href="/api/vendors/{{ vendor.id }}/performance" class="nav_link sublink "> Click </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8">No vendors available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

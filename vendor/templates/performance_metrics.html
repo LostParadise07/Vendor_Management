@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendor Performance Metrics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        /* Style for the performance metrics */
+        .performance-metrics {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 300px;
+            margin: 0 auto;
+        }
+        .performance-metrics li {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vendor Performance Metrics</h1>
+    <div class="performance-metrics">
+        <ul>
+            <li>On-Time Delivery Rate: {{ performance_metrics.on_time_delivery_rate }}</li>
+            <li>Quality Rating Average: {{ performance_metrics.quality_rating_avg }}</li>
+            <li>Average Response Time: {{ performance_metrics.average_response_time }}</li>
+            <li>Fulfillment Rate: {{ performance_metrics.fulfillment_rate }}</li>
+        </ul>
+    </div>
+</body>
+</html>

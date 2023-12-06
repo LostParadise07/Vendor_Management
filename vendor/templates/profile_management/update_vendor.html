@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Update Vendor</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+  <style>
+    /* Additional CSS for custom styling */
+    .form-group {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Update Vendor</h2>
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="id_name">Name:</label>
+            <input type="text" class="form-control" id="id_name" value="{{ name }}" name="name" required>
+            <div class="invalid-feedback">
+              Please provide a name.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="id_address">Address:</label>
+            <input type="text" class="form-control" value="{{ address }}" id="id_address" name="address" required>
+            <div class="invalid-feedback">
+              Please provide an address.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="id_on_time_delivery_rate">On-Time Delivery Rate:</label>
+            <input type="number" class="form-control" id="id_on_time_delivery_rate" value="{{delivery}}" name="on_time_delivery_rate" required>
+            <div class="invalid-feedback">
+              Please provide the on-time delivery rate.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="id_average_response_time">Average Response Time:</label>
+            <input type="number" class="form-control" id="id_average_response_time" value="{{average_response_time}}" name="average_response_time" required>
+            <div class="invalid-feedback">
+              Please provide the average response time.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="id_contact_details">Contact Details:</label>
+            <input type="text" class="form-control" id="id_contact_details" value="{{contact_details}}" name="contact_details" required>
+            <div class="invalid-feedback">
+              Please provide contact details.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="id_vendor_code">Vendor Code:</label>
+            <input type="text" class="form-control" value="{{code}}" id="id_vendor_code" name="vendor_code" disabled="true">
+            <div class="invalid-feedback">
+              Please provide a vendor code.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="id_quality_rating_avg">Quality Rating Average:</label>
+            <input type="number" class="form-control" value="{{rating}}" id="id_quality_rating_avg" name="quality_rating_avg" required>
+            <div class="invalid-feedback">
+              Please provide the quality rating average.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="id_fulfillment_rate">Fulfillment Rate:</label>
+            <input type="number" class="form-control" value="{{fulfillment_rate}}" id="id_fulfillment_rate" name="fulfillment_rate" required>
+            <div class="invalid-feedback">
+              Please provide the fulfillment rate.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update Vendor</button>
+    </form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendor Details</title>
+    <style>
+        /* CSS for basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        /* CSS for specific details */
+        .vendor-info {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+        .vendor-info p {
+            margin: 5px 0;
+        }
+        .purchase-orders, .historical-performance {
+            margin-bottom: 30px;
+        }
+        .purchase-orders li:nth-child(odd) {
+            background-color: #f7f7f7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vendor Details</h1>
+    
+    <div class="vendor-info">
+        <h2>Vendor Information:</h2>
+        <p>Name: {{ vendor.name }}</p>
+        <p>Contact Details: {{ vendor.contact_details }}</p>
+        <p>Address: {{ vendor.address }}</p>
+        <p>Vendor Code: {{ vendor.vendor_code }}</p>
+        <p>On-Time Delivery Rate: {{ vendor.on_time_delivery_rate }}</p>
+        <p>Quality Rating Average: {{ vendor.quality_rating_avg }}</p>
+        <p>Average Response Time: {{ vendor.average_response_time }}</p>
+        <p>Fulfillment Rate: {{ vendor.fulfillment_rate }}</p>
+    </div>
+
+    <div class="purchase-orders">
+        <h2>Purchase Orders:</h2>
+        <ul>
+            {% for po in purchase_orders %}
+                <li>
+                    <strong>PO Number:</strong> {{ po.po_number }}<br>
+                    <strong>Order Date:</strong> {{ po.order_date }}<br>
+                    <strong>Delivery Date:</strong> {{ po.delivery_date }}<br>
+                    <!-- Include other purchase order details as needed -->
+                </li>
+            {% empty %}
+                <li>No Purchase Orders found for this vendor.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="historical-performance">
+        <h2>Historical Performance:</h2>
+        <ul>
+            {% for hp in historical_performance %}
+                <li>
+                    <strong>Date:</strong> {{ hp.date }}<br>
+                    <strong>On-Time Delivery Rate:</strong> {{ hp.on_time_delivery_rate }}<br>
+                    <strong>Quality Rating Average:</strong> {{ hp.quality_rating_avg }}<br>
+                    <strong>Average Response Time:</strong> {{ hp.average_response_time }}<br>
+                    <strong>Fulfillment Rate:</strong> {{ hp.fulfillment_rate }}<br>
+                </li>
+            {% empty %}
+                <li>No Historical Performance records found for this vendor.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

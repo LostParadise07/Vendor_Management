@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Purchases</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Add any additional custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">List of Purchases</h2>
+        <div class="mb-3">
+            <label for="vendorFilter">Filter by Vendor:</label>
+            <select id="vendorFilter" class="form-control" onchange="filterByVendor()">
+                <option value="">All Vendors</option>
+                {% for vendor in vendors %}
+                    <option value="{{ vendor.id }}">{{ vendor.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>PO Number</th>
+                    <th>Vendor</th>
+                    <th>Order Date</th>
+                    <th>Delivery Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                    <tr>
+                        <td>{{ purchase.po_number }}</td>
+                        <td>{{ purchase.vendor.name }}</td>
+                        <td>{{ purchase.order_date }}</td>
+                        <td>{{ purchase.delivery_date }}</td>
+                        <td>{{ purchase.status }}</td>
+                        <td>
+                            <a href="{% url 'update_purchase' purchase.id %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'delete_purchase' purchase.id %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a> 
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">No purchases available</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    function filterByVendor() {
+        var selectedVendorId = document.getElementById('vendorFilter').value;
+        var rows = document.getElementsByTagName('tr');
+    
+        for (var i = 1; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var vendorCell = cells[1]; // Assuming vendor name is in the second cell
+    
+            var vendorName = vendorCell.textContent.trim();
+            if (selectedVendorId === '' || vendorName === selectedVendorId) {
+                rows[i].style.display = ''; // Show the row
+            } else {
+                rows[i].style.display = 'none'; // Hide the row
+            }
+        }
+    }
+    </script>
+</body>
+</html>
